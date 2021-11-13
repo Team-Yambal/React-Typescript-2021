@@ -1,5 +1,7 @@
 # React-Typescript-2021
 
+# Step 1
+[Create React App を使わずに React & TypeScript 環境を作る(2021 年 3 月) その１](https://enjoyworks.jp/tech-blog/6889)
 ```
 yarn
 ```
@@ -137,7 +139,7 @@ yarn tsc --init
 
 
 ### npm スクリプトの変更
-並列実行モジュール
+並列実行モジュールを追加
 ```
 yarn add --dev npm-run-all
 ```
