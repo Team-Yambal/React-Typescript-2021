@@ -1,18 +1,23 @@
 # React-Typescript-2021
 
 # Step 1
+
 [Create React App を使わずに React & TypeScript 環境を作る(2021 年 3 月) その１](https://enjoyworks.jp/tech-blog/6889)
+
 ```
 yarn
 ```
 
 ## Babel の環境セットアップ
+
 ### webpack
+
 ```
 yarn add --dev webpack webpack-cli webpack-dev-server html-webpack-plugin
 ```
 
 ### Babel
+
 ```
 yarn add --dev @babel/core @babel/runtime @babel/plugin-transform-runtime @babel/preset-env babel-loader
 ```
@@ -28,8 +33,11 @@ yarn add --dev @babel/preset-react
 ```
 
 ## Test
-``index.html``, ``app.js``, ``Hello.jsx``を作成
+
+`index.html`, `app.js`, `Hello.jsx`を作成
+
 ### webpack.config.js
+
 ```
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -72,15 +80,19 @@ module.exports = {
   },
 };
 ```
+
 ### ビルド
 
 ```
 yarn webpack --config webpack.config.js
 ```
+
 ### 開発サーバー
+
 ```
 yarn webpack serve --config webpack.config.js
 ```
+
 ### npm-script
 
 ```package.json
@@ -91,16 +103,20 @@ yarn webpack serve --config webpack.config.js
   }
 ```
 
-## Step 2
+# Step 2
+
 [Create React App を使わずに React & TypeScript 環境を作る(2021 年 5 月) その 2](https://enjoyworks.jp/tech-blog/7337)
 
-### typescript の環境セットアップ
+## typescript の環境セットアップ
+
 babel の typescript プリセット、typescript、react の型定義ファイル
+
 ```
 yarn add --dev @babel/preset-typescript typescript @types/react @types/react-dom
 ```
 
 webpack.config.js
+
 ```webpack.config.js
   resolve: {
     modules: [path.resolve(__dirname, "node_modules")],
@@ -125,26 +141,34 @@ webpack.config.js
       },
     ],
 ```
-#### tsconfig.json の編集
-typescript の初期設定コマンドで``tsconfig.json``を作成。
+
+### tsconfig.json の編集
+
+typescript の初期設定コマンドで`tsconfig.json`を作成。
+
 ```
 yarn tsc --init
 ```
-[tsconfig.jsonを編集](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/tsconfig.json)
+
+[tsconfig.json を編集](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/tsconfig.json)
 
 ### コードの変更
-``app.js``, ``Hello.jsx``をTypescript化
-- [app.jsをapp.tsxに](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/src/app.tsx)
-- [Hello.jsxをHello.tsxに](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/src/Hello.tsx)
 
+`app.js`, `Hello.jsx`を Typescript 化
 
-### npm スクリプトの変更
+- [app.js を app.tsx に](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/src/app.tsx)
+- [Hello.jsx を Hello.tsx に](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/src/Hello.tsx)
+
+## npm スクリプトの変更
+
 並列実行モジュールを追加
+
 ```
 yarn add --dev npm-run-all
 ```
 
-#### npm-script
+### npm-script
+
 ```package.json
   "scripts": {
     "tsc": "tsc",
@@ -158,7 +182,149 @@ yarn add --dev npm-run-all
   }
 ```
 
-### 開発サーバで起動
+## 開発サーバで起動
+
 ```
 yarn start
+```
+
+# Step 3
+
+[Create React App を使わずに React & TypeScript 環境を作る(2021 年 7 月) その ３](https://enjoyworks.jp/tech-blog/7793)
+
+## ESlint の導入
+
+ESLint 本体、webpack のプラグイン
+
+```
+yarn add --dev eslint eslint-webpack-plugin
+```
+
+### webpack.config.js
+
+`eslint-webpack-plugin` を組み込む
+
+```
+const ESLintPlugin = require("eslint-webpack-plugin");
+...
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src/index.html"),
+    }),
+    // 追加
+    new ESLintPlugin({
+      extensions: ["ts", "tsx", "js"],
+    }),
+  ],
+...
+```
+
+### .eslintrc.js を作成する
+
+```
+yarn eslint --init
+
+√ How would you like to use ESLint? · problems
+√ What type of modules does your project use? · esm
+√ Which framework does your project use? · react
+√ Does your project use TypeScript? · No / Yes
+√ Where does your code run? · browser
+√ What format do you want your config file to be in? · JavaScript
+...
+√ Would you like to install them now with npm? · No / Yes
+```
+
+#### .eslintrc.js を編集する
+
+```
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: "module",
+    // 追加
+    project: "./tsconfig.json",　
+  },
+  // 追加
+  settings: {
+    react: {
+      version: "17",
+    },
+  },
+```
+
+### npm-script
+
+```
+...
+  "scripts": {
+    ...
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src"
+  },
+...
+```
+
+lint
+
+```
+yarn lint
+```
+
+fix
+
+```
+yarn lint:fix
+```
+
+## Prettier の導入
+
+Prettier 本体、eslint 向けの重複ルールを無効化するための設定と ESLint 実行時に prettier を実行するためのプラグイン
+
+```
+yarn add --dev prettier eslint-config-prettier eslint-plugin-prettier
+```
+
+### Prettier の設定ファイル
+
+```.prettierrc
+{
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true
+}
+```
+
+### ESLint に Prettier を組み込む
+
+.eslintrc.js
+
+```.eslintrc.js
+module.exports = {
+  ...
+  extends: [
+    ...
+    "plugin:prettier/recommended",
+    "prettier",
+  ],
+  ...
+};
+```
+
+### vscode に拡張機能をインストール
+
+`dbaeumer.vscode-eslint`:ESLint
+`esbenp.prettier-vscode`:Prettir - Code formatter
+
+#### 拡張機能の設定
+
+VSCode のコマンドパレット `settings json`
+
+```
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+  },
 ```
