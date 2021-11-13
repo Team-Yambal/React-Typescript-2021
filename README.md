@@ -128,9 +128,13 @@ typescript の初期設定コマンドで``tsconfig.json``を作成。
 ```
 yarn tsc --init
 ```
+[tsconfig.jsonを編集](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/tsconfig.json)
 
 ### コードの変更
 ``app.js``, ``Hello.jsx``をTypescript化
+- [app.jsをapp.tsxに](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/src/app.tsx)
+- [Hello.jsxをHello.tsxに](https://github.com/yambal/React-Typescript-2021/blob/e6206bd16528cd8fd1aedf3faae9142ab89f650a/src/Hello.tsx)
+
 
 ### npm スクリプトの変更
 並列実行モジュール
