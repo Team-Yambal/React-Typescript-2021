@@ -88,3 +88,71 @@ yarn webpack serve --config webpack.config.js
     "start": "webpack serve --config webpack.config.js"
   }
 ```
+
+## Step 2
+[Create React App を使わずに React & TypeScript 環境を作る(2021 年 5 月) その 2](https://enjoyworks.jp/tech-blog/7337)
+
+### typescript の環境セットアップ
+babel の typescript プリセット、typescript、react の型定義ファイル
+```
+yarn add --dev @babel/preset-typescript typescript @types/react @types/react-dom
+```
+
+webpack.config.js
+```webpack.config.js
+  resolve: {
+    modules: [path.resolve(__dirname, "node_modules")],
+    extensions: [".ts", ".tsx", ".js"], // ts, tsx追加、jsx削除
+  },
+  module: {
+    rules: [
+      {
+        test: [/\.ts$/, /\.tsx$/], // js -> ts
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                "@babel/preset-env",
+                "@babel/preset-react",
+                "@babel/preset-typescript",  // <- 追加
+              ],
+            },
+          },
+        ],
+      },
+    ],
+```
+#### tsconfig.json の編集
+typescript の初期設定コマンドで``tsconfig.json``を作成。
+```
+yarn tsc --init
+```
+
+### コードの変更
+``app.js``, ``Hello.jsx``をTypescript化
+
+### npm スクリプトの変更
+並列実行モジュール
+```
+yarn add --dev npm-run-all
+```
+
+#### npm-script
+```package.json
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "webpack:build": "webpack --config webpack.config.js",
+    "webpack:watch": "webpack --watch --config webpack.config.js",
+    "webpack:start": "webpack serve --config webpack.config.js",
+    "build": "run-s tsc webpack:build",
+    "watch": "run-p tsc:watch webpack:watch",
+    "start": "run-p tsc:watch webpack:start"
+  }
+```
+
+### 開発サーバで起動
+```
+yarn start
+```
