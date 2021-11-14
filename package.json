@@ -9,6 +9,7 @@
     "@types/jest": "^27.0.2",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
+    "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.3.1",
     "@typescript-eslint/parser": "^5.3.1",
     "babel-loader": "^8.2.3",
@@ -21,6 +22,7 @@
     "jest": "^27.3.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.4.1",
+    "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.0.7",
     "typescript": "^4.4.4",
     "webpack": "^5.64.0",
@@ -41,6 +43,7 @@
     "watch": "run-p tsc:watch webpack:watch",
     "start": "run-p tsc:watch webpack:start",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix src"
+    "lint:fix": "eslint --fix src",
+    "test": "jest"
   }
 }
