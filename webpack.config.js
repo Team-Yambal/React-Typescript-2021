@@ -38,11 +38,11 @@ module.exports = {
     }),
     new ESLintPlugin({
       extensions: ["ts", "tsx", "js"],
-    }),yarn
+    }),
   ],
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
-    }
+    },
   },
 };
