@@ -102,8 +102,6 @@ yarn webpack serve --config webpack.config.js
 
 # Step 2
 
-[Create React App を使わずに React & TypeScript 環境を作る(2021 年 5 月) その 2](https://enjoyworks.jp/tech-blog/7337)
-
 ## typescript の環境セットアップ
 
 babel の typescript プリセット、typescript、react の型定義ファイル
@@ -329,6 +327,7 @@ VSCode のコマンドパレット `settings json`
 ## 参考
 
 - [Create React App を使わずに React & TypeScript 環境を作る(2021 年 3 月) その１](https://enjoyworks.jp/tech-blog/6889)
+- [Create React App を使わずに React & TypeScript 環境を作る(2021 年 5 月) その 2](https://enjoyworks.jp/tech-blog/7337)
 
 [^1]: Facrbook が提供している CLI ツールで用意されたテンプレートを元にアプリケーションの雛形を生成してくれるものです。
 [^2]: モジュールバンドラ：複数のファイルを１つにまとめる
