@@ -42,7 +42,24 @@ test("Hello Component Snapshot", () => {
 ## DOM のテスト
 
 - [DOM のテスト](https://jestjs.io/ja/docs/tutorial-react#dom-%E3%81%AE%E3%83%86%E3%82%B9%E3%83%88)
+  - レンダリングされた DOM を操作したい場合 `react-testing-library ` が必要
+    - `TestUtils`は推奨されていない
+    - React が 16 以下の場合は `Enzyme` を使う
 
 ```
 yarn add --dev @testing-library/react
+```
+
+```
+...
+import { render, screen } from "@testing-library/react";
+
+test("Hello Component", () => {
+  ...
+
+  // Dom testing
+  render(<Hello />);
+  const element = screen.getByText(/Hello World/i);
+  expect(element).toBeTruthy();
+});
 ```
