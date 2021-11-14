@@ -1,39 +1,36 @@
-# React x Typescript : 最初の一歩
+## React x TypeScript : 最初の一歩
 
-# Step 1
+[Create React App](https://create-react-app.dev/)[^1]を使用しないで React x Typescript 環境を構築します。
 
-[Create React App を使わずに React & TypeScript 環境を作る(2021 年 3 月) その１](https://enjoyworks.jp/tech-blog/6889)
+↓ パッケージの管理を開始します（プロジェクトの構成を開始する空のディレクトリで）
 
 ```
 yarn
 ```
 
-## Babel の環境セットアップ
+## 必要なパッケージをプロジェクトに追加する
 
-### webpack
+↓ webpack[^2]をプロジェクトに追加する
 
 ```
 yarn add --dev webpack webpack-cli webpack-dev-server html-webpack-plugin
 ```
 
-### Babel
+↓ Babel[^3]をプロジェクトに追加する
 
 ```
-yarn add --dev @babel/core @babel/runtime @babel/plugin-transform-runtime @babel/preset-env babel-loader
+yarn add --dev @babel/core @babel/runtime @babel/plugin-transform-runtime @babel/preset-env babel-loader @babel/preset-react
 ```
 
-## React
+↓ React[^4]をプロジェクトに追加する
 
 ```
 yarn add react react-dom
 ```
 
-```
-yarn add --dev @babel/preset-react
-```
+## とりあえず、動くか確認
 
-## Test
-
+まずは JsvsSctipt（TypeScript ではなく）で動作確認しましょう
 `index.html`, `app.js`, `Hello.jsx`を作成
 
 ### webpack.config.js
@@ -328,3 +325,12 @@ VSCode のコマンドパレット `settings json`
       "source.fixAll.eslint": true
   },
 ```
+
+## 参考
+
+- [Create React App を使わずに React & TypeScript 環境を作る(2021 年 3 月) その１](https://enjoyworks.jp/tech-blog/6889)
+
+[^1]: Facrbook が提供している CLI ツールで用意されたテンプレートを元にアプリケーションの雛形を生成してくれるものです。
+[^2]: モジュールバンドラ：複数のファイルを１つにまとめる
+[^3]: JavaScript トランスコンパイラ：現時点ではブラウザでは使用できないコードを下位互換の JsvaScript に変換する
+[^4]: Facebook とコミュニティによって開発されているユーザインタフェース構築のための JavaScript ライブラリ

@@ -1,1 +1,2 @@
-- [React x Typescript : 最初の一歩]()
+- [React x Typescript : 最初の一歩](./reactTypescript)
+- [Jest x Typescript : 単体テストの最初の一歩](./JestTypescript)
