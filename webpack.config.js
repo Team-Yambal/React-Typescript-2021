@@ -9,7 +9,7 @@ module.exports = {
   entry: path.resolve(__dirname, "src/app.tsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "app.js",
+    filename: "app-[hash].js",
   },
   resolve: {
     modules: [path.resolve(__dirname, "node_modules")],
