@@ -2,12 +2,14 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
+process.env.NODE_CONFIG_ENV = process.env["NODE_CONFIG_ENV"] || "development";
+
 module.exports = {
-  mode: "development",
+  mode: process.env.NODE_CONFIG_ENV,
   entry: path.resolve(__dirname, "src/app.tsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "app.js",
+    filename: "app-[hash].js",
   },
   resolve: {
     modules: [path.resolve(__dirname, "node_modules")],
