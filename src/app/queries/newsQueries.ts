@@ -9,7 +9,7 @@ type NewsQueriesProps = {
   apiKey?: string
 }
 
-const client = api(aspida())
+const newsapiAxiosClient = api(aspida())
 
 export const newsQueries = createApi({
   reducerPath: 'newsApi',
@@ -27,7 +27,7 @@ export const newsQueries = createApi({
             data: errorNews,
           }
         }
-        const news = await client.v2.top_headlines.$get({
+        const news = await newsapiAxiosClient.v2.top_headlines.$get({
           query: {
             category: a.category,
             apiKey: a.apiKey,

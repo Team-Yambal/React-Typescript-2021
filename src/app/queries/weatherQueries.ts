@@ -9,18 +9,18 @@ type GetWeatherProps = {
   longitude: number
 }
 
-const client = api(aspida())
+const meteoAxiosClient = api(aspida())
 
 export const weatherQueries = createApi({
   reducerPath: 'weatherApi',
   baseQuery: fakeBaseQuery(),
   endpoints: builder => ({
     getWeather: builder.query<Weather, GetWeatherProps>({
-      queryFn: async () => {
-        const weather = await client.v1.forecast.$get({
+      queryFn: async (query: GetWeatherProps) => {
+        const weather = await meteoAxiosClient.v1.forecast.$get({
           query: {
-            latitude: 35,
-            longitude: 135,
+            latitude: query.latitude,
+            longitude: query.longitude,
             daily:
               'weathercode,temperature_2m_max,temperature_2m_min,precipitation_hours',
             timezone: 'Asia/Tokyo',
