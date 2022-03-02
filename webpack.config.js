@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
 
 process.env.NODE_CONFIG_ENV = process.env['NODE_CONFIG_ENV'] || 'development'
 
@@ -42,6 +43,7 @@ module.exports = {
     new ESLintPlugin({
       extensions: ['ts', 'tsx', 'js'],
     }),
+    new Dotenv(),
   ],
   devServer: {
     static: {
