@@ -1,19 +1,19 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ESLintPlugin = require("eslint-webpack-plugin");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
-process.env.NODE_CONFIG_ENV = process.env["NODE_CONFIG_ENV"] || "development";
+process.env.NODE_CONFIG_ENV = process.env['NODE_CONFIG_ENV'] || 'development'
 
 module.exports = {
   mode: process.env.NODE_CONFIG_ENV,
-  entry: path.resolve(__dirname, "src/app.tsx"),
+  entry: path.resolve(__dirname, 'src/app.tsx'),
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "app-[hash].js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app-[hash].js',
   },
   resolve: {
-    modules: [path.resolve(__dirname, "node_modules")],
-    extensions: [".ts", ".tsx", ".js"],
+    modules: [path.resolve(__dirname, 'node_modules')],
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
@@ -21,13 +21,14 @@ module.exports = {
         test: [/\.ts$/, /\.tsx$/],
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
               presets: [
-                "@babel/preset-env",
-                "@babel/preset-react",
-                "@babel/preset-typescript",
+                '@babel/preset-env',
+                '@babel/preset-react',
+                '@babel/preset-typescript',
               ],
+              plugins: ['@babel/plugin-transform-runtime'],
             },
           },
         ],
@@ -36,15 +37,15 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src/index.html"),
+      template: path.resolve(__dirname, 'src/index.html'),
     }),
     new ESLintPlugin({
-      extensions: ["ts", "tsx", "js"],
+      extensions: ['ts', 'tsx', 'js'],
     }),
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, "dist"),
+      directory: path.join(__dirname, 'dist'),
     },
   },
-};
+}
