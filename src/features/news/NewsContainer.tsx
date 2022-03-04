@@ -1,5 +1,6 @@
 import React from 'react'
 import { useGetNewsQuery } from '../../app/queries/newsQueries'
+import { NewsItem } from './NewsItem'
 
 export default function NewsContainer() {
   const { data } = useGetNewsQuery({
@@ -9,7 +10,9 @@ export default function NewsContainer() {
 
   return (
     <div>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {data?.articles.map(article => {
+        return <NewsItem article={article} key={article.url} />
+      })}
     </div>
   )
 }

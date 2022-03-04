@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { counterSelector } from './CounterSelector'
 import { counterSlice } from './counterSlice'
 import { useAppDispatch } from '../../app/store'
+import { Counter } from './Counter'
 
 export const CounterContainer = () => {
   const count = useSelector(counterSelector)
@@ -14,10 +15,7 @@ export const CounterContainer = () => {
 
   return (
     <div>
-      {count}
-      <button type="button" onClick={addHandler}>
-        Add
-      </button>
+      <Counter count={count} onClickAdd={addHandler} />
     </div>
   )
 }

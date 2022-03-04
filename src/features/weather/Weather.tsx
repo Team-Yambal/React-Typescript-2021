@@ -1,11 +1,11 @@
 import React from 'react'
-import { Weather } from '../../app/models/Weather'
+import { Weather as WeatherModel } from '../../app/models/Weather'
 
 export type WeatherProps = {
-  weather?: Weather
+  weather?: WeatherModel
 }
 
-export const WeatherComponent = ({ weather }: WeatherProps) => {
+export const Weather = ({ weather }: WeatherProps) => {
   return (
     <div>
       <pre>{JSON.stringify(weather, null, 2)}</pre>
