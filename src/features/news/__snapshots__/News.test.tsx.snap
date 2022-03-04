@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewsItem 1`] = `
+<article>
+  <h1>
+    『FF14』第69回PLL新情報まとめ。日本データセンター再編により、光の戦士たちはこの夏“クラス替え” - AUTOMATON
+  </h1>
+  <p>
+    スクウェア・エニックスは3月4日、『ファイナルファンタジーXIV』の新情報を配信する生放送「第69回プロデューサーレターLIVE」を配信した。その内容をまとめよう。
+  </p>
+  <img
+    src="https://automaton-media.com/wp-content/uploads/2022/03/20220304-194356-header.jpg"
+  />
+  <a
+    href="https://automaton-media.com/articles/newsjp/20220304-194356/"
+  >
+    https://automaton-media.com/articles/newsjp/20220304-194356/
+  </a>
+  <div>
+    Aki Nogishi
+    @
+    Automaton-media.com
+  </div>
+  <div>
+    Fri Mar 04 2022 22:32:13 GMT+0900 (日本標準時)
+  </div>
+</article>
+`;

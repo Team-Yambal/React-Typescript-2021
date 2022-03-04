@@ -1,6 +1,6 @@
 import React from 'react'
 import { useGetWeatherQuery } from '../../app/queries/weatherQueries'
-import { WeatherComponent } from './Weather'
+import { Weather } from './Weather'
 
 export default function WeatherContainer() {
   const { data, error, isLoading, refetch } = useGetWeatherQuery(
@@ -20,7 +20,7 @@ export default function WeatherContainer() {
       </button>
       <div>{isLoading ? 'loading' : 'loaded'}</div>
       <pre>{JSON.stringify(error, null, 2)}</pre>
-      <WeatherComponent weather={data} />
+      <Weather weather={data} />
     </div>
   )
 }
