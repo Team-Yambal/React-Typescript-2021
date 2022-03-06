@@ -31,8 +31,10 @@ export const NewsItem = ({ article, ...restProps }: NewsItemProps) => {
           mr="0.5rem"
         />
         <x.div w="100%" display="flex" flexDirection="column">
-          <x.h5>{article.title}</x.h5>
-          <x.p h="100%">{article.description}</x.p>
+          <x.h4>{article.title}</x.h4>
+          <x.p h="100%" mt="0">
+            {article.description}
+          </x.p>
           <x.div fontSize="0.7rem" textAlign="right">
             {article.author} : {date.toString()}
           </x.div>

@@ -5,9 +5,10 @@ import styled, { x } from '@xstyled/styled-components'
 
 const Wrapper = styled(x.div)`
   ${/* sc-selector */ NewsItemWrapper}:not(:last-child) {
-    margin-bottom: 0.25rem;
-    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
     border-bottom-width: 1px;
+    border-bottom-style: solid;
   }
 `
 

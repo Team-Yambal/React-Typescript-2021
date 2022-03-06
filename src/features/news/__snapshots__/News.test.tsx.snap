@@ -15,13 +15,13 @@ exports[`NewsItem 1`] = `
     <div
       className="sc-cxpSdN dhFRpC"
     >
-      <h5
-        className="sc-caiLqq"
+      <h4
+        className="sc-jcFjpl"
       >
         『FF14』第69回PLL新情報まとめ。日本データセンター再編により、光の戦士たちはこの夏“クラス替え” - AUTOMATON
-      </h5>
+      </h4>
       <p
-        className="sc-eLwHnm etoqfE"
+        className="sc-eLwHnm GFANF"
       >
         スクウェア・エニックスは3月4日、『ファイナルファンタジーXIV』の新情報を配信する生放送「第69回プロデューサーレターLIVE」を配信した。その内容をまとめよう。
       </p>

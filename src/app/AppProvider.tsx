@@ -1,7 +1,6 @@
-import { Preflight } from '@xstyled/styled-components'
+import { ThemeProvider } from '@xstyled/styled-components'
 import React, { ReactNode } from 'react'
 import { Provider } from 'react-redux'
-import { ThemeProvider } from 'styled-components'
 import { GlobalStyle } from '../style/GlobalStyle'
 import { theme } from '../style/theme'
 import { store } from './store/store'
@@ -14,7 +13,6 @@ export function AppProvider({ children }: ProviderProps) {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Preflight />
         <GlobalStyle />
         {children}
       </ThemeProvider>
