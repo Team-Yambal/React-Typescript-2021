@@ -7,7 +7,7 @@ process.env.NODE_CONFIG_ENV = process.env['NODE_CONFIG_ENV'] || 'development'
 
 module.exports = {
   mode: process.env.NODE_CONFIG_ENV,
-  entry: path.resolve(__dirname, 'src/app.tsx'),
+  entry: path.resolve(__dirname, 'src/bootstrap.tsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app-[hash].js',

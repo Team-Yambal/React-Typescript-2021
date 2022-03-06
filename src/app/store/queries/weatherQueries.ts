@@ -1,8 +1,8 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import api from '../../api/meteo/$api'
+import api from '../../../api/meteo/$api'
 import aspida from '@aspida/axios'
-import { Weather } from '../models/Weather'
+import { Weather } from '../../models/Weather'
 
 type GetWeatherProps = {
   latitude: number

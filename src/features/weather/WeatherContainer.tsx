@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetWeatherQuery } from '../../app/queries/weatherQueries'
+import { useGetWeatherQuery } from '../../app/store/queries/weatherQueries'
 import { Weather } from './Weather'
 
 export default function WeatherContainer() {

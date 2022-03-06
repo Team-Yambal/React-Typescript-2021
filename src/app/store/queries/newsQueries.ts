@@ -1,8 +1,8 @@
 import { createApi, fakeBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import api from '../../api/newsapi/$api'
+import api from '../../../api/newsapi/$api'
 import aspida from '@aspida/axios'
-import { News } from '../models/News'
+import { News } from '../../models/News'
 
 type NewsQueriesProps = {
   category: string

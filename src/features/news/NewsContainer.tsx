@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetNewsQuery } from '../../app/queries/newsQueries'
+import { useGetNewsQuery } from '../../app/store/queries/newsQueries'
 import { NewsItem } from './NewsItem'
 
 export default function NewsContainer() {
