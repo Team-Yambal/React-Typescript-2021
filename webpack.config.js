@@ -50,4 +50,5 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
   },
+  devtool: 'eval-source-map', // source-map
 }
