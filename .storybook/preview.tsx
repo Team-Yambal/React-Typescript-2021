@@ -3,6 +3,7 @@ import { GlobalStyle } from '../src/style/GlobalStyle'
 import { StoryContext, StoryGetter } from '@storybook/addons'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../src/style/theme'
+import { Preflight } from '@xstyled/styled-components'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -19,7 +20,12 @@ export const parameters = {
  */
 export const decorators = [
   (getStory: StoryGetter, context: StoryContext) => {
-    return <ThemeProvider theme={theme}>{getStory(context)}</ThemeProvider>
+    return (
+      <ThemeProvider theme={theme}>
+        <Preflight />
+        {getStory(context)}
+      </ThemeProvider>
+    )
   },
 ]
 

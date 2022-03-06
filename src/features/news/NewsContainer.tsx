@@ -1,18 +1,35 @@
 import React from 'react'
 import { useGetNewsQuery } from '../../app/store/queries/newsQueries'
-import { NewsItem } from './NewsItem'
+import { NewsItem, Wrapper as NewsItemWrapper } from './NewsItem'
+import styled, { x } from '@xstyled/styled-components'
 
-export default function NewsContainer() {
+const Wrapper = styled(x.div)`
+  ${/* sc-selector */ NewsItemWrapper}:not(:last-child) {
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-bottom-width: 1px;
+  }
+`
+
+type NewsContainerProps = typeof x.div.defaultProps
+
+export default function NewsContainer({ ...restProps }: NewsContainerProps) {
   const { data } = useGetNewsQuery({
     category: 'technology',
     apiKey: process.env.NEWSAPI_API_KEY,
   })
 
   return (
-    <div>
+    <Wrapper {...restProps}>
       {data?.articles.map(article => {
-        return <NewsItem article={article} key={article.url} />
+        return (
+          <NewsItem
+            article={article}
+            key={article.url}
+            borderBottomColor="grayLighten"
+          />
+        )
       })}
-    </div>
+    </Wrapper>
   )
 }

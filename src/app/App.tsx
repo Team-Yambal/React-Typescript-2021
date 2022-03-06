@@ -7,9 +7,14 @@ import { AppProvider } from './AppProvider'
 export const App = () => {
   return (
     <AppProvider>
-      <CounterContainer />
+      <CounterContainer m="1rem" />
       <WeatherContainer />
-      <NewsContainer />
+      <NewsContainer
+        p="0.25rem"
+        m="0.25rem"
+        border="solid 1px gray"
+        borderColor="grayLighten"
+      />
     </AppProvider>
   )
 }
