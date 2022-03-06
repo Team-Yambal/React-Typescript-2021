@@ -34,7 +34,7 @@ export const NewsItem = ({ article, ...restProps }: NewsItemProps) => {
           <x.h5>{article.title}</x.h5>
           <x.p h="100%">{article.description}</x.p>
           <x.div fontSize="0.7rem" textAlign="right">
-            {date.toString()}
+            {article.author} : {date.toString()}
           </x.div>
         </x.div>
       </x.article>

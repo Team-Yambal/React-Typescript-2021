@@ -41,6 +41,6 @@ test('Weather', () => {
 
   // Dom testing
   render(<Weather weather={weather} />)
-  const count = screen.getByText(/35.625/i)
+  const count = screen.getByText(/3\/5/i)
   expect(count).toBeTruthy()
 })

@@ -1,23 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Counter 1`] = `
-<div>
-  1
+Array [
+  "1",
   <button
+    className="sc-bqiRlB fGakq"
     onClick={[Function]}
   >
     Add
-  </button>
-</div>
-`;
-
-exports[`Hello Component 1`] = `
-<div>
-  1
-  <button
-    onClick={[Function]}
-  >
-    Add
-  </button>
-</div>
+  </button>,
+]
 `;
