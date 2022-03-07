@@ -1,15 +1,18 @@
 import React from 'react'
+import { Button } from '../../atmicComponents/Button'
 
-type CounterProps = {
+export type CounterProps = {
   count: number
   onClickAdd: () => void
 }
 
 export const Counter = ({ count, onClickAdd }: CounterProps) => {
   return (
-    <div>
+    <>
       {count}
-      <button onClick={onClickAdd}>Add</button>
-    </div>
+      <Button variantColor="primary" onClick={onClickAdd}>
+        Add
+      </Button>
+    </>
   )
 }

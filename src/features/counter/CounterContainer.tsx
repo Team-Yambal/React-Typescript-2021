@@ -4,8 +4,11 @@ import { counterSelector } from '../../app/store/selector/CounterSelector'
 import { counterSlice } from './counterSlice'
 import { useAppDispatch } from '../../app/store/store'
 import { Counter } from './Counter'
+import { x } from '@xstyled/styled-components'
 
-export const CounterContainer = () => {
+type CounterContainerProps = typeof x.div.defaultProps
+
+export const CounterContainer = ({ ...props }: CounterContainerProps) => {
   const count = useSelector(counterSelector)
   const dispatch = useAppDispatch()
 
@@ -14,8 +17,8 @@ export const CounterContainer = () => {
   }, [count])
 
   return (
-    <div>
-      <Counter count={count} onClickAdd={addHandler} />
-    </div>
+    <x.div {...props}>
+      <Counter count={count} onClickAdd={addHandler} {...props} />
+    </x.div>
   )
 }
