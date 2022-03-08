@@ -7,7 +7,7 @@ import WeatherContainer from '../features/weather/WeatherContainer'
 */
 import { AppProvider } from './AppProvider'
 import { Route, Switch } from 'react-router-dom'
-import { SuspenseRoute } from './SuspenseRoute'
+import { SuspenseRoute } from './routes/SuspenseRoute'
 
 type AppProps = React.ComponentProps<typeof Switch>
 
