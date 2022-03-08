@@ -5,11 +5,11 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { weatherQueries } from './queries/weatherQueries'
 import { newsQueries } from './queries/newsQueries'
 import { createRootReducer } from './reducer'
-import { history } from './history'
+import { browserHistory } from '../browserHistory'
 
 export type RootState = ReturnType<typeof rootReducer>
 
-const rootReducer = createRootReducer(history)
+const rootReducer = createRootReducer(browserHistory)
 
 export const store = configureStore({
   reducer: rootReducer,
