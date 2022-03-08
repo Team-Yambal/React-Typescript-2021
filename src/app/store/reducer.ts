@@ -1,0 +1,16 @@
+import { combineReducers } from 'redux'
+import { connectRouter } from 'connected-react-router'
+import { History } from 'history'
+
+import { counterSlice } from '../../features/counter/counterSlice'
+import { weatherQueries } from './queries/weatherQueries'
+import { newsQueries } from './queries/newsQueries'
+
+export const createRootReducer = (history: History) => {
+  return combineReducers({
+    router: connectRouter(history),
+    [counterSlice.name]: counterSlice.reducer,
+    [weatherQueries.reducerPath]: weatherQueries.reducer,
+    [newsQueries.reducerPath]: newsQueries.reducer,
+  })
+}

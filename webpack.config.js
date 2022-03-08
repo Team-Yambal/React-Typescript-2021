@@ -49,6 +49,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    historyApiFallback: true,
   },
-  devtool: 'source-map', // eval-source-map
+  devtool: 'source-map', // eval-source-map,
 }

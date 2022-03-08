@@ -1,18 +1,15 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
-import { counterSlice } from '../../features/counter/counterSlice'
 
 import { setupListeners } from '@reduxjs/toolkit/query'
 import { weatherQueries } from './queries/weatherQueries'
 import { newsQueries } from './queries/newsQueries'
-
-export const rootReducer = combineReducers({
-  [counterSlice.name]: counterSlice.reducer,
-  [weatherQueries.reducerPath]: weatherQueries.reducer,
-  [newsQueries.reducerPath]: newsQueries.reducer,
-})
+import { createRootReducer } from './reducer'
+import { history } from './history'
 
 export type RootState = ReturnType<typeof rootReducer>
+
+const rootReducer = createRootReducer(history)
 
 export const store = configureStore({
   reducer: rootReducer,
