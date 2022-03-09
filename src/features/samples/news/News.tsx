@@ -1,5 +1,5 @@
 import React from 'react'
-import { News as NewsModel } from '../../app/models/News'
+import { News as NewsModel } from '../../../app/models/News'
 
 export type NewsProps = {
   news?: NewsModel

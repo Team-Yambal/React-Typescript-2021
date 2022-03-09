@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { counterSelector } from '../../app/store/selector/CounterSelector'
+import { counterSelector } from '../../../app/store/selector/CounterSelector'
 import { counterSlice } from './counterSlice'
-import { useAppDispatch } from '../../app/store/store'
+import { useAppDispatch } from '../../../app/store/store'
 import { Counter } from './Counter'
 import { x } from '@xstyled/styled-components'
 
