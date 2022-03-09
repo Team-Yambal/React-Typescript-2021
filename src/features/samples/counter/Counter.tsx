@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../../atmicComponents/Button'
+import { Button } from '../../../atmicComponents/Button'
 
 export type CounterProps = {
   count: number

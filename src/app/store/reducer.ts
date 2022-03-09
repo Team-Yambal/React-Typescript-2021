@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
 import { History } from 'history'
 
-import { counterSlice } from '../../features/counter/counterSlice'
+import { counterSlice } from '../../features/samples/counter/counterSlice'
 import { weatherQueries } from './queries/weatherQueries'
 import { newsQueries } from './queries/newsQueries'
 

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { Weather as WeatherModel } from '../../app/models/Weather'
+import { Weather as WeatherModel } from '../../../app/models/Weather'
 import { x } from '@xstyled/styled-components'
 
 export type WeatherProps = {

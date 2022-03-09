@@ -1,5 +1,5 @@
 import React from 'react'
-import { NewsArticle } from '../../app/models/News'
+import { NewsArticle } from '../../../app/models/News'
 import styled, { x } from '@xstyled/styled-components'
 
 export const Wrapper = styled(x.a)``

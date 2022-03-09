@@ -1,13 +1,9 @@
 import * as React from 'react'
 
-import { CounterContainer } from '../features/counter/CounterContainer'
-/*
-import NewsContainer from '../features/news/NewsContainer'
-import WeatherContainer from '../features/weather/WeatherContainer'
-*/
 import { AppProvider } from './AppProvider'
 import { Route, Switch } from 'react-router-dom'
 import { SuspenseRoute } from './routes/SuspenseRoute'
+import { Samples } from '../features/samples/Samples'
 
 type AppProps = React.ComponentProps<typeof Switch>
 
@@ -16,14 +12,10 @@ export const App: React.FC<AppProps> = ({ ...routesProps }) => {
     <AppProvider>
       <Switch {...routesProps}>
         <SuspenseRoute
-          exact={true}
+          exact={false}
           path="/sample"
           fallback={null}
-          children={
-            <>
-              <CounterContainer />
-            </>
-          }
+          children={<Samples />}
         />
         <Route children={<>World</>} />
       </Switch>

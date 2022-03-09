@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetNewsQuery } from '../../app/store/queries/newsQueries'
+import { useGetNewsQuery } from '../../../app/store/queries/newsQueries'
 import { NewsItem, Wrapper as NewsItemWrapper } from './NewsItem'
 import styled, { x } from '@xstyled/styled-components'
 
