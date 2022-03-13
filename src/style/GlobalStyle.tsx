@@ -13,14 +13,17 @@ export const GlobalStyle = createGlobalStyle`
   ${normalize()}
 
   html {
-    font-size: 10px;
+    font-size: 14px;
   }
 
   body {
-    font-size: 1.4rem;
     line-height: 1.5;
 
     font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  }
+
+  *, ::after, ::before {
+    box-sizing: border-box;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -55,6 +58,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    padding-left: 2rem;
+  }
+
+  l, ol, ul {
     margin-top: 0;
     margin-bottom: 1rem;
   }
