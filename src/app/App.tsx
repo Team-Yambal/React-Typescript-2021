@@ -6,6 +6,8 @@ import { SuspenseRoute } from './routes/SuspenseRoute'
 import { Samples } from '../features/samples/Samples'
 import { Navbar } from '../atmicComponents/Navbar'
 import { Container } from '../atmicComponents/Container'
+import { SignIn, SignOut } from '../features/firebase/SignInSiginOut'
+import { User } from '../features/firebase/User'
 
 type AppProps = React.ComponentProps<typeof Switch>
 
@@ -36,6 +38,9 @@ export const App: React.FC<AppProps> = ({ ...routesProps }) => {
           />
           <Route children={<>World</>} />
         </Switch>
+        <SignIn />
+        <SignOut />
+        <User />
       </Container>
     </AppProvider>
   )
