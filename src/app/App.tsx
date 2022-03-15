@@ -16,7 +16,7 @@ export const App: React.FC<AppProps> = ({ ...routesProps }) => {
         backgroundColor="primary"
         brand={
           <Navbar.Brand>
-            <Link to="/">Brand</Link>
+            <Link to="/">My Project</Link>
           </Navbar.Brand>
         }
         color="white"
