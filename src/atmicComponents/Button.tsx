@@ -50,7 +50,7 @@ export type ButtonProps = typeof x.button.defaultProps & {
 }
 
 export const Button: React.FC<ButtonProps> = React.forwardRef(function Button(
-  { children, variantColor = 'primary', ...restProps },
+  { children, disabled, variantColor = 'primary', ...restProps },
   ref
 ) {
   return (
@@ -75,6 +75,8 @@ export const Button: React.FC<ButtonProps> = React.forwardRef(function Button(
       fontWeight={400}
       userSelect="none"
       {...buttonVariants.variantColor[variantColor]}
+      disabled={disabled}
+      opacity={disabled ? 0.65 : 1}
       {...restProps}
     >
       {children}
