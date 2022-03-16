@@ -9,7 +9,7 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-  argTypes: { onClick: { action: 'clicked' } },
+  argTypes: { onClick: { action: 'clicked' }, disabled: Boolean },
 } as ComponentMeta<typeof Button>
 
 export const list = () => {
