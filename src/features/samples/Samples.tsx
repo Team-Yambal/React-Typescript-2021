@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Navs } from '../../atmicComponents/Navs'
 import { CounterContainer } from './counter/CounterContainer'
 import NewsContainer from './news/NewsContainer'
+import { SampleForm } from './sampleForm/SampleForm'
 import WeatherContainer from './weather/WeatherContainer'
 
 export const Samples = () => {
@@ -29,6 +30,8 @@ export const Samples = () => {
         </Route>
         <Route exact path={'/sample/weather'} children={<WeatherContainer />} />
         <Route exact path={'/sample/news'} children={<NewsContainer />} />
+        <Route exact path={'/sample/form'} children={<SampleForm />} />
+        <Route>Notfound</Route>
       </Switch>
     </>
   )
