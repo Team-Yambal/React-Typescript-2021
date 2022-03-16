@@ -11,6 +11,7 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
   const prefix = (baseURL === undefined ? 'https://us-central1-myproject-eee15.cloudfunctions.net' : baseURL).replace(/\/$/, '')
   const PATH0 = '/api/domainSetting'
   const GET = 'GET'
+  const POST = 'POST'
 
   return {
     api: {
@@ -19,6 +20,10 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
           fetch<Methods0['get']['resBody']>(prefix, PATH0, GET, option).json(),
         $get: (option: { query: Methods0['get']['query'], config?: T }) =>
           fetch<Methods0['get']['resBody']>(prefix, PATH0, GET, option).json().then(r => r.body),
+        post: (option: { body: Methods0['post']['reqBody'], config?: T }) =>
+          fetch<Methods0['post']['resBody']>(prefix, PATH0, POST, option).json(),
+        $post: (option: { body: Methods0['post']['reqBody'], config?: T }) =>
+          fetch<Methods0['post']['resBody']>(prefix, PATH0, POST, option).json().then(r => r.body),
         $path: (option?: { method?: 'get'; query: Methods0['get']['query'] }) =>
           `${prefix}${PATH0}${option && option.query ? `?${dataToURLString(option.query)}` : ''}`
       }

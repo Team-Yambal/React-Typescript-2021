@@ -1,17 +1,17 @@
 import * as React from 'react'
 
 import { AppProvider } from './AppProvider'
-import { Link, Route, Switch } from 'react-router-dom'
-import { SuspenseRoute } from './routes/SuspenseRoute'
-import { Samples } from '../features/samples/Samples'
+import { Link, Switch } from 'react-router-dom'
 import { Navbar } from '../atmicComponents/Navbar'
 import { Container } from '../atmicComponents/Container'
-import { SignIn, SignOut } from '../features/firebase/SignInSiginOut'
+import { SignIn } from '../features/firebase/SignInSiginOut'
 import { User } from '../features/firebase/User'
+import { Auth } from '../features/auth/Auth'
+import { DomainSetting } from '../features/domainSetting/DomainSetting'
 
 type AppProps = React.ComponentProps<typeof Switch>
 
-export const App: React.FC<AppProps> = ({ ...routesProps }) => {
+export const App: React.FC<AppProps> = () => {
   return (
     <AppProvider>
       <Navbar
@@ -29,18 +29,11 @@ export const App: React.FC<AppProps> = ({ ...routesProps }) => {
         ]}
       />
       <Container>
-        <Switch {...routesProps}>
-          <SuspenseRoute
-            exact={false}
-            path="/sample"
-            fallback={null}
-            children={<Samples />}
-          />
-          <Route children={<>World</>} />
-        </Switch>
-        <SignIn />
-        <SignOut />
-        <User />
+        <Auth
+          anonymouse={<SignIn />}
+          user={<User />}
+          notSetting={<DomainSetting />}
+        />
       </Container>
     </AppProvider>
   )
