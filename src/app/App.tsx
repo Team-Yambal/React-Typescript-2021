@@ -5,9 +5,10 @@ import { Link, Switch } from 'react-router-dom'
 import { Navbar } from '../atmicComponents/Navbar'
 import { Container } from '../atmicComponents/Container'
 import { SignIn } from '../features/firebase/SignInSiginOut'
-import { User } from '../features/firebase/User'
 import { Auth } from '../features/auth/Auth'
 import { DomainSetting } from '../features/domainSetting/DomainSetting'
+import { UserInBar } from '../features/user/UserInBar'
+import { Dashboad } from '../features/user/Dashboad'
 
 type AppProps = React.ComponentProps<typeof Switch>
 
@@ -27,11 +28,13 @@ export const App: React.FC<AppProps> = () => {
             <Link to="/sample/counter">Samples</Link>
           </Navbar.NavItem>,
         ]}
-      />
+      >
+        <UserInBar />
+      </Navbar>
       <Container>
         <Auth
           anonymouse={<SignIn />}
-          user={<User />}
+          user={<Dashboad />}
           notSetting={<DomainSetting />}
         />
       </Container>

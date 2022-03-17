@@ -28,19 +28,21 @@ export const DomainSetting = () => {
   })
 
   type formData = {
-    domain: string
+    domain: string | null
     sheetId: string
   }
 
   const onSubmit = (data: formData) => {
-    updateDomainSetting({
-      domain: data.domain,
-      sheetId: data.sheetId,
-    }).then(() => {
-      getDomainSetting({
+    if (data.domain) {
+      updateDomainSetting({
         domain: data.domain,
+        sheetId: data.sheetId,
+      }).then(() => {
+        getDomainSetting({
+          domain: data.domain,
+        })
       })
-    })
+    }
   }
 
   return (
