@@ -9,7 +9,7 @@ import { SignOut } from '../firebase/SignInSiginOut'
 
 export const DomainSetting = () => {
   const { localUser } = useFirebaseAuth()
-  const [updateDomainSetting, setResult] = useUpdateDomainSettingMutation()
+  const [updateDomainSetting, updateResult] = useUpdateDomainSettingMutation()
   const [getDomainSetting] = useLazyGetDomainSettingQuery()
 
   const domain = React.useMemo(() => {
@@ -50,7 +50,7 @@ export const DomainSetting = () => {
         <input type="text" {...register('sheetId')} />
         <button type="submit">Set</button>
       </form>
-      <pre>{JSON.stringify(setResult.data)}</pre>
+      <pre>{JSON.stringify(updateResult.data)}</pre>
       <SignOut />
     </>
   )
