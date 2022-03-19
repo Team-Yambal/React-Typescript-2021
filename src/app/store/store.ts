@@ -6,6 +6,8 @@ import { weatherQueries } from './queries/weatherQueries'
 import { newsQueries } from './queries/newsQueries'
 import { createRootReducer } from './reducer'
 import { browserHistory } from '../browserHistory'
+import { asanaQueries } from './queries/asanaQueties'
+import { dbUserQueries } from './queries/dbUserQueries'
 
 export type RootState = ReturnType<typeof rootReducer>
 
@@ -17,7 +19,9 @@ export const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware()
       .concat(weatherQueries.middleware)
-      .concat(newsQueries.middleware),
+      .concat(newsQueries.middleware)
+      .concat(asanaQueries.middleware)
+      .concat(dbUserQueries.middleware),
 })
 
 /**

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import {
-  useLazyGetDomainSettingQuery,
+  useGetDomainSettingQuery,
   useUpdateDomainSettingMutation,
 } from '../../app/store/queries/firebaseQueries'
 import { useFirebaseAuth } from '../firebase/hooks/useFirebaseAuth'
@@ -10,37 +10,37 @@ import { SignOut } from '../firebase/SignInSiginOut'
 export const DomainSetting = () => {
   const { localUser } = useFirebaseAuth()
   const [updateDomainSetting, updateResult] = useUpdateDomainSettingMutation()
-  const [getDomainSetting] = useLazyGetDomainSettingQuery()
+  // const [getDomainSetting] = useLazyGetDomainSettingQuery()
 
   const domain = React.useMemo(() => {
-    if (localUser?.email) {
-      return localUser?.email?.split('@')[1]
+    if (localUser && localUser.email) {
+      return localUser.email.split('@')[1]
     }
     return null
   }, [localUser])
+
+  const { data: domainSetting, refetch } = useGetDomainSettingQuery({ domain })
 
   const { register, handleSubmit } = useForm({
     mode: 'onSubmit',
     defaultValues: {
       domain,
-      sheetId: '',
+      sheetId: domainSetting?.spreadsheet.id,
     },
   })
 
   type formData = {
-    domain: string | null
-    sheetId: string
+    domain?: string | null
+    sheetId?: string
   }
 
   const onSubmit = (data: formData) => {
-    if (data.domain) {
+    if (data.domain && data.sheetId) {
       updateDomainSetting({
         domain: data.domain,
         sheetId: data.sheetId,
       }).then(() => {
-        getDomainSetting({
-          domain: data.domain,
-        })
+        refetch()
       })
     }
   }

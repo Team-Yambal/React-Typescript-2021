@@ -13,15 +13,17 @@ export const FirebaseAuthListener = ({
 
   React.useEffect(() => {
     onAuthStateChanged(firebaseAuth, user => {
-      console.log(user)
       if (user) {
-        setUser({
-          uid: user.uid,
-          displayName: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL,
-          emailVerified: user.emailVerified,
-          isAnonymous: user.isAnonymous,
+        user.getIdToken().then(idToken => {
+          setUser({
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            emailVerified: user.emailVerified,
+            isAnonymous: user.isAnonymous,
+            idToken,
+          })
         })
       } else {
         setUser(null)
