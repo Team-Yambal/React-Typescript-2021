@@ -7,7 +7,7 @@ import { Container } from '../atmicComponents/Container'
 import { SignIn } from '../features/firebase/SignInSiginOut'
 import { Auth } from '../features/auth/Auth'
 import { UserInBar } from '../features/user/UserInBar'
-import { Dashboad } from '../features/dashboad/Dashboad'
+import { UserRouter } from './routes/UserRouter'
 
 type AppProps = React.ComponentProps<typeof Switch>
 
@@ -31,7 +31,7 @@ export const App: React.FC<AppProps> = () => {
         <UserInBar />
       </Navbar>
       <Container>
-        <Auth anonymouse={<SignIn />} user={<Dashboad />} />
+        <Auth anonymouse={<SignIn />} user={<UserRouter />} />
       </Container>
     </AppProvider>
   )

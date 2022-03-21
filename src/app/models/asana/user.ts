@@ -1,4 +1,4 @@
-export type User = {
+export type AsanaUser = {
   gid?: string
   email?: string
   name?: string
