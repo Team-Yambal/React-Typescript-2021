@@ -3,7 +3,7 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import {
   useLazyGetAuthCodeURLQuery,
-  useLazyGetUserQuery as useLazyGetAsanaUserQuery,
+  useLazyGetAsanaUserQuery as useLazyGetAsanaUserQuery,
 } from '../../app/store/queries/asanaQueties'
 import { useFirebaseAuth } from '../firebase/hooks/useFirebaseAuth'
 
@@ -44,7 +44,7 @@ export const AsanaInfo = () => {
               AsanaAcountLink
             </x.a>
           )}
-          <x.div>{asanaUser.data.name}</x.div>
+          <x.div>{JSON.stringify(asanaUser.data, null, 2)}</x.div>
           {asanaUser.data.workspaces?.map(workspace => {
             return (
               <x.div
@@ -53,7 +53,8 @@ export const AsanaInfo = () => {
                 data-gid={workspace.gid}
                 cursor="pointer"
               >
-                {workspace.name}
+                {workspace.name} : {workspace.gid}
+                <pre>{JSON.stringify(workspace)}</pre>
               </x.div>
             )
           })}

@@ -5,6 +5,8 @@ import aspida from '@aspida/axios'
 import { AsanaAuthorizationCodeURL } from '../../models/asana/authorizationCodeURL'
 import { AsanaUser } from '../../models/asana/user'
 import { AsanaWorkspace } from '../../models/asana/workspace'
+import { AsanaTeam } from '../../models/asana/team'
+import { AsanaPortfolio } from '../../models/asana/portfolio'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 type getAuthCodeURLProps = { uid?: string }
@@ -13,6 +15,24 @@ type AsanaUserProps = {
   idToken: string
 }
 type AsanaWorkspaceProps = {
+  uid: string
+  workspaceGid: string
+  idToken: string
+}
+type GetTeamsInAOrgProps = {
+  uid: string
+  workspaceGid: string
+  idToken: string
+}
+
+type GetTeamsForUserProps = {
+  uid: string
+  userGid: string
+  workspaceGid: string
+  idToken: string
+}
+
+type GetOwnedPortfolios = {
   uid: string
   workspaceGid: string
   idToken: string
@@ -45,7 +65,7 @@ export const asanaQueries = createApi({
         }
       },
     }),
-    getUser: builder.query<AsanaUser, AsanaUserProps>({
+    getAsanaUser: builder.query<AsanaUser, AsanaUserProps>({
       queryFn: async (a: AsanaUserProps) => {
         const header = {
           Authorization: `Bearer ${a.idToken}`,
@@ -78,14 +98,76 @@ export const asanaQueries = createApi({
         }
       },
     }),
+    getTeamsInAOrg: builder.query<AsanaTeam[], GetTeamsInAOrgProps>({
+      queryFn: async (a: GetTeamsInAOrgProps) => {
+        const header = {
+          Authorization: `Bearer ${a.idToken}`,
+        }
+        const response = await asanaApiAxiosClient.api.asana.getTeamInOrg.$post(
+          {
+            body: {
+              uid: a.uid,
+              workspaceGid: a.workspaceGid,
+            },
+            headers: header,
+          }
+        )
+        return {
+          data: response,
+        }
+      },
+    }),
+    getTeamsForUser: builder.query<AsanaTeam[], GetTeamsForUserProps>({
+      queryFn: async (a: GetTeamsForUserProps) => {
+        const header = {
+          Authorization: `Bearer ${a.idToken}`,
+        }
+        const response =
+          await asanaApiAxiosClient.api.asana.getTeamsForUser.$post({
+            body: {
+              uid: a.uid,
+              userGid: a.userGid,
+              orgGid: a.workspaceGid,
+            },
+            headers: header,
+          })
+        return {
+          data: response,
+        }
+      },
+    }),
+    getOwnedPortfolios: builder.query<AsanaPortfolio[], GetOwnedPortfolios>({
+      queryFn: async (a: GetTeamsForUserProps) => {
+        const header = {
+          Authorization: `Bearer ${a.idToken}`,
+        }
+        const response =
+          await asanaApiAxiosClient.api.asana.getOwnedPortfolios.$post({
+            body: {
+              uid: a.uid,
+              workspaceGid: a.workspaceGid,
+            },
+            headers: header,
+          })
+        return {
+          data: response,
+        }
+      },
+    }),
   }),
 })
 
 export const {
   useGetAuthCodeURLQuery,
   useLazyGetAuthCodeURLQuery,
-  useGetUserQuery,
-  useLazyGetUserQuery,
+  useGetAsanaUserQuery,
+  useLazyGetAsanaUserQuery,
   useGetWorkspaceQuery,
   useLazyGetWorkspaceQuery,
+  useGetTeamsInAOrgQuery,
+  useLazyGetTeamsInAOrgQuery,
+  useGetTeamsForUserQuery,
+  useLazyGetTeamsForUserQuery,
+  useGetOwnedPortfoliosQuery,
+  useLazyGetOwnedPortfoliosQuery,
 } = asanaQueries
